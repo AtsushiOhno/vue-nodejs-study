@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <!-- 開発バージョン、便利なコンソールの警告が含まれています -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="clock">
+        <b>時計（お約束）</b>
+        <div>日付: {{ clock_date }}</div>
+        <div>時刻: {{ clock_time }}</div>
+    </div>
+
+    <hr>
+
+    <div id="app">
+        <b>店内状況（最終更新 {{ update_time }}）</b>
+        <div>室温: {{ temp }}&nbsp;&#8451;</div>
+        <div>湿度: {{ humid }}&nbsp;%</div>
+        <div>気圧: {{ pressure }}&nbsp;&#13169;</div>
+    </div>
+
+    <hr>
+
+    <div id="price">
+        <b>【食べ放題受付ペッパー君】</b>
+        <div> 大人:1,200円、小人:800円</div>
+        <div> 合計料金をお伝えします。</div>
+            <div>
+                <p>ペッパー「{{ total_price }}」</p>
+                <p>
+                    <label><span>小人</span>
+                    <input type="number" v-model="child_num" min="0" />人</label>
+                </p>
+                <p>
+                    <label><span>大人</span>
+                    <input type="number" v-model="adult_num" min="0" />人</label>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="memo">
+        <b>メモアプリ</b>
+        <div>メモだ</div>
+        <div>
+            <input v-model="memo_message" placeholder="メモ内容">
+            <button v-on:click="addMemo">追加</button>
+        </div>
+        <ul>
+            <li v-for="memo in memos">
+              {{ memo.message }}
+            </li>
+          </ul>
+        </div>
+    </div>
+
+    <script src="vue_app.js"></script>
+</body>
+</html>

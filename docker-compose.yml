@@ -1,0 +1,15 @@
+version: "2"
+services:
+  python-simulated-sensor-device:
+    build: ./python-simulated-sensor-device
+    container_name: "python-sensor"
+    tty: true
+
+  nodejs-backend:
+    build: ./nodejs-backend
+    volumes:
+      - ./nodejs-backend/vol/html:/usr/app/html
+    ports:
+      - "8080:8080"
+    container_name: "nodejs-backend"
+    
